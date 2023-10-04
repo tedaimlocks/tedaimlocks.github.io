@@ -1,0 +1,68 @@
+body,
+html {
+    font-family: 'Roboto Mono', monospace;
+}
+
+#center,
+#discord {
+    position: fixed;
+    text-align: center;
+    font-family: Consolas, monospace;
+}
+
+
+#overlay-toggle {
+    position: absolute;
+    display: none;
+}
+
+.overlay {
+    z-index: 1;
+    background-color: #000;
+}
+
+.overlay label {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vw;
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+#discord {
+    top: 46.7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#center,
+.center,
+.fullscreen {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fullscreen {
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+body {
+    background-color: #000!important;
+    color: #ffffff!important;
+    background: #fff;
+}
+
+#overlay-toggle:checked~.overlay {
+    animation-fill-mode: forwards;
+    animation-name: fade, hide;
+}
+
+@keyframes hide {
+    to {
+        visibility: hidden;
+    }
+}
