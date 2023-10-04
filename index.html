@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="tedaimlocks">
+    <meta property="og:url" content="tedaimlocks.wtf">
+    <meta property="og:image" content="https://media.tenor.com/j0SkPNvyNToAAAAd/jordan-barrett-mogged.gif">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="">
+
+    <title>funeral.wtf</title>
+</head>
+<body oncontextmenu="return false;">
+    <input type="checkbox" id="overlay-toggle" autocomplete="off">
+    <div class="overlay fullscreen">
+        <div id="center">
+            <label for="overlay-toggle" onclick="audioPlay(); videoPlay()"> 
+                <div id="enter"><b class="a">click ^_^</b></div>
+            </label>
+        </div>
+    </div>  
+    <script>
+        function audioPlay() {
+            var audio = document.getElementById("audio");
+            audio.volume = 1;
+            audio.play();
+        }
+
+        function videoPlay() {
+            var video = document.getElementById("video");
+            video.play();
+        }
+    </script>
+    <section class="fullscreen text-content">
+        <audio loop preload="auto" id="audio">
+            <source src="https://cdn.discordapp.com/attachments/910522014077444177/1158887160024408084/rf.mp3" type="audio/mp3">
+        </audio>
+
+        <video id="video" width="1920" height="1080" muted loop>
+            <source src="https://cdn.discordapp.com/attachments/910522014077444177/1158886785351422002/videoplayback.mp4" type="video/mp4">
+        </video>
+
+        <div id="discord">
+            <img class="fade-in-text" src="https://discord.c99.nl/widget/theme-2/780473798025281546.png" alt="Centered Image" draggable="false">
+        </div>
+    </section>
+</body>
+</html>
