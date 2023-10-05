@@ -61,6 +61,12 @@ body {
     animation-name: fade, hide;
 }
 
+#discord {
+    background: #000;
+    padding: 20px; 
+    border-radius: 10px; 
+}
+
 @keyframes hide {
     to {
         visibility: hidden;
