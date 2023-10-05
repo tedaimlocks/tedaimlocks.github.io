@@ -10,6 +10,7 @@ html {
     font-family: Consolas, monospace;
 }
 
+
 #overlay-toggle {
     position: absolute;
     display: none;
@@ -33,8 +34,6 @@ html {
     top: 46.7%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #000; /* Add this line to set the background to black */
-    z-index: 2; /* Increase the z-index to ensure it's on top of other elements */
 }
 
 #center,
@@ -48,4 +47,3 @@ html {
 .fullscreen {
     position: fixed;
     min-height: 100vh;
-}
