@@ -1,9 +1,6 @@
 body,
 html {
     font-family: 'Roboto Mono', monospace;
-    margin: 0;
-    padding: 0;
-    height: 100%;
 }
 
 #center,
@@ -11,44 +8,55 @@ html {
     position: fixed;
     text-align: center;
     font-family: Consolas, monospace;
-    transform: translate(-50%, -50%);
 }
 
 #overlay-toggle {
+    position: absolute;
     display: none;
 }
 
 .overlay {
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
+    background-color: #000;
+}
+
+.overlay label {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vw;
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+#discord {
+    top: 46.7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    position: relative;
+}
+
+#discord::before {
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.overlay label {
-    color: #ffffff;
-    font-size: 2.5rem;
-    cursor: pointer;
-}
-
-#discord {
-    top: 50%;
-    left: 50%;
     background-color: #000;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: -1; 
 }
 
+#center,
 .center,
 .fullscreen {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
+}
+
+.fullscreen {
+    position: fixed;
+    min-height: 100vh;
 }
