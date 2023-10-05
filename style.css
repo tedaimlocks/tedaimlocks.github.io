@@ -10,6 +10,7 @@ html {
     font-family: Consolas, monospace;
 }
 
+
 #overlay-toggle {
     position: absolute;
     display: none;
@@ -17,20 +18,14 @@ html {
 
 .overlay {
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
+    background-color: #000;
 }
 
 .overlay label {
     display: grid;
     place-items: center;
+    width: 100vw;
+    height: 100vw;
     color: #ffffff;
     font-size: 2.5rem;
 }
@@ -39,8 +34,6 @@ html {
     top: 46.7%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
-    z-index: 2;
 }
 
 #center,
@@ -49,11 +42,10 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute; 
-    z-index: 2; 
 }
 
 .fullscreen {
+    position: fixed;
     min-height: 100vh;
     min-width: 100vw;
 }
