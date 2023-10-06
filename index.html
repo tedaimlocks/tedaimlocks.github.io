@@ -8,6 +8,28 @@
     <meta property="og:image" content="https://media.discordapp.net/attachments/1145356111147434105/1145428115577905312/kitten-relaxing-paws.gif">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="">
+    <style>
+        #discord {
+            width: 700px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+        }
+
+        #gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
 
     <title>tedaimlocks.wtf</title>
 </head>
@@ -37,10 +59,8 @@
             <source src="https://cdn.discordapp.com/attachments/910522014077444177/1158887160024408084/rf.mp3" type="audio/mp3">
         </audio>
 
-        <video id="video" width="1920" height="1080" muted loop>
-            <source src="https://cdn.discordapp.com/attachments/910522014077444177/1158886785351422002/videoplayback.mp4" type="video/mp4">
-        </video>
-
+        <img id="gif" src="https://media.discordapp.net/attachments/781088932455907358/1159867478575423638/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif?ex=653295c4&is=652020c4&hm=19518ede7345cd4e3550f8c0ff0c24d8463e6db39467982756e68ccdcc05fc74&=&width=400&height=224" alt="Kitten GIF">
+        
         <div id="discord">
             <img class="fade-in-text" src="https://discord.c99.nl/widget/theme-4/780473798025281546.png" alt="Centered Image" draggable="false">
         </div>
