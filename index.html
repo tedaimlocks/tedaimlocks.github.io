@@ -1,69 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="assets/images/pfp/healavatar1.png" href="assets/images/pfp/healavatar1.png">
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="tedaimlocks">
-    <meta property="og:url" content="tedaimlocks.wtf">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1145356111147434105/1145428115577905312/kitten-relaxing-paws.gif">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tedaimlocks.wtf</title>
+    <meta property="og:title" content="tedaimlocks.wtf">
+    <meta property="og:description" content="Yo thats crazy">
+    <meta property="og:image" content="https://tenor.com/view/soggy-cat-cat-bath-shower-cute-gif-26528563">
+    <meta property="og:url" content="tedaimlocks.html">
+    <meta property="theme-color" content="#000000">
+    <link rel="stylesheet" href="static/assets/css/landing.css">
     <style>
-        #discord {
-            width: 700px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 25px;
-        }
 
-        #gif {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
+
+
+* {
+
+}
+
+
+body {
+    background-image: url('./assets/images/bg/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    color: #fff;
+    background-color: #1F2128;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.description.typewrite {
+    /* Change the color code to blue */
+    text-shadow: 0 0 5px #6e6e6e, 0 0 10px #6e6e6e, 0 0 15px #6e6e6e, 0 0 20px #6e6e6e;
+}
+
+
+.customglow-username {
+    font-size: 30px;
+    margin-right: 10px;
+    font-family: Satoshi;
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    }
+    50% {
+        box-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
+    }
+    100% {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    }
+}
+
+.avatar_effect {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    /*animation: glow 2s infinite;*/
+}
+
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.rainbow-username {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Satoshi;
+  margin-right: 10px;
+  color: #ff0000;
+  animation: animate 3s linear infinite;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+}
+
+@keyframes animate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
     </style>
 
-    <title>tedaimlocks.wtf</title>
+<link href="static/userinfo/style.css" rel="stylesheet">
+<link rel="stylesheet" href="./cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="./cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
-<body oncontextmenu="return false;">
-    <input type="checkbox" id="overlay-toggle" autocomplete="off">
-    <div class="overlay fullscreen">
-        <div id="center">
-            <label for="overlay-toggle" onclick="audioPlay(); videoPlay()"> 
-                <div id="enter"><b class="a">click ^_^</b></div>
-            </label>
+
+    <div class="landing" id="landing">
+
+    <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="619" height="671"></canvas></div>
+
+
+    <div class="border">
+        <div class="avatar">
+            <div class="avatar-container">
+                <img src="./assets/images/pfp/healavatar.jpg" alt="Avatar" class="avatar_effect">
+              </div>
         </div>
-    </div>  
+
+        <div class="social-media">
+			<center>
+				<!-- username -->
+				<p class="normal-username" style="color: #fff; text-align:center; background-image: url('https://media.discordapp.net/attachments/987149728800198686/991834200309248070/sparkle.gif');filter: drop-shadow(8px 8px 10px #ffffff);color:#ffffff; height:3%;width:11%;">卐
+				<!-- <span class="inline-effect">ted</span> -->
+				</p>
+			</center>
+
+
+            <!-- roles -->
+
+            <div class="role-icon own">
+            <img src="static/userinfo/roles/own.png" alt="Own">
+            <span class="tooltip">Owner</span>
+            </div>
+
+            <div class="role-icon dev">
+            <img src="static/userinfo/roles/dev.png" alt="Dev">
+            <span class="tooltip">Developer</span>
+            </div>
+
+            <div class="role-icon cysc">
+            <img src="static/userinfo/roles/cysc.png" alt="Cysc">
+            <span class="tooltip">skid</span>
+            </div>
+
+            <!-- description  -->
+            <p class="description typewrite" ,="" data-period="1300" data-type="[&quot;tedaimlocks.wtf&quot;, &quot;im best coder&quot;]"><span class="wrap">tedaimlocks.wtf</span></p>
+
+			<div class="flex justify-center items-center space-x-2">
+				<div style="text-align: center;">
+					<a href="https://discord.com/users/780473798025281546" target="_blank">
+						<img src="https://discord.c99.nl/widget/theme-4/780473798025281546.png" style="width: 300px;">
+						</a>
+				</div>
+			</div>
+
+        <div class="social-icons">
+            <!-- Discord -->
+            <a href="https://discord.gg/nKTCm2SWEW" class="icon-link" id="discord-link" target="_blank">
+                <img src="static/userinfo/svg/discord.svg" alt="Discord Icon" class="icon">
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/tedaimlocks" class="icon-link" id="github-link" target="_blank">
+                <img src="static/userinfo/svg/github.svg" alt="GitHub Icon" class="icon">
+            </a>
+        </div>
+     </div>
+     </div>
+  </div>
+
+
+<script src="static/userinfo/script.js"></script>
+<script src="static/assets/js/enter.js"></script>
+
+
+
+
     <script>
-        function audioPlay() {
-            var audio = document.getElementById("audio");
-            audio.volume = 1;
-            audio.play();
-        }
 
-        function videoPlay() {
-            var video = document.getElementById("video");
-            video.play();
-        }
+particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 100,
+          density: {
+            enable: true,
+            value_area: 800,
+          },
+        },
+        color: {
+          value: "#fff", 
+        },
+        shape: {
+          type: "circle", 
+        },
+        opacity: {
+          value: 0.8,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false,
+          },
+        },
+        size: {
+          value: 5,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 1,
+            sync: false,
+          },
+        },
+        line_linked: {
+          enable: false,
+        },
+        move: {
+          enable: true,
+          speed: 1, 
+          direction: "bottom",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+        },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: false,
+          },
+          onclick: {
+            enable: false,
+          },
+          resize: true,
+        },
+        modes: {
+          grab: {
+            distance: 400,
+            line_linked: {
+              opacity: 1,
+            },
+          },
+          bubble: {
+            distance: 250,
+            size: 0,
+            duration: 2,
+            opacity: 0,
+          },
+          repulse: {
+            distance: 400,
+            duration: 0.4,
+          },
+          push: {
+            particles_nb: 4,
+          },
+          remove: {
+            particles_nb: 2,
+          },
+        },
+      },
+      retina_detect: true,
+    });
+
     </script>
-    <section class="fullscreen text-content">
-        <audio loop preload="auto" id="audio">
-            <source src="https://cdn.discordapp.com/attachments/910522014077444177/1158887160024408084/rf.mp3" type="audio/mp3">
-        </audio>
 
-        <img id="gif" src="https://media.discordapp.net/attachments/781088932455907358/1159867478575423638/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif?ex=653295c4&is=652020c4&hm=19518ede7345cd4e3550f8c0ff0c24d8463e6db39467982756e68ccdcc05fc74&=&width=400&height=224" alt="Kitten GIF">
-        
-        <div id="discord">
-            <img class="fade-in-text" src="https://discord.c99.nl/widget/theme-4/780473798025281546.png" alt="Centered Image" draggable="false">
-        </div>
-    </section>
-</body>
 </html>
