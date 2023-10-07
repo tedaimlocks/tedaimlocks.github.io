@@ -1,83 +1,20 @@
-body,
-html {
-    font-family: 'Roboto Mono', monospace;
+body, html {
+    height: 100%;
+    margin: 0;
 }
 
-#center,
-#discord {
-    position: fixed;
-    text-align: center;
-    font-family: Consolas, monospace;
-}
-
-
-#overlay-toggle {
-    position: absolute;
-    display: none;
-}
-
-.overlay {
-    z-index: 1;
-    background-color: #000;
-}
-
-.overlay label {
-    display: grid;
-    place-items: center;
-    width: 100vw;
-    height: 100vw;
-    color: #ffffff;
-    font-size: 2.5rem;
-}
-
-#discord {
-    top: 46.7%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#discord-square {
-    position: fixed;
-    width: 200px; /* Adjust the width and height to your desired size */
-    height: 200px;
-    background-color: #123; /* Set the background color of the square */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2; /* Make sure it's above the overlay */
-    text-align: center;
+.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#center,
-.center,
-.fullscreen {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.fullscreen {
-    position: fixed;
+    flex-direction: column;
+    justify-content: flex-end;
     min-height: 100vh;
-    min-width: 100vw;
 }
 
-body {
-    background-color: #000!important;
-    color: #ffffff!important;
-    background: #fff;
+.footer {
+	filter: drop-shadow(2px 2px 2px rgba(0,0,0,100));
+    color: gray;
+    text-align: center;
+    padding: 20px;
 }
 
-#overlay-toggle:checked~.overlay {
-    animation-fill-mode: forwards;
-    animation-name: fade, hide;
-}
 
-@keyframes hide {
-    to {
-        visibility: hidden;
-    }
-}
