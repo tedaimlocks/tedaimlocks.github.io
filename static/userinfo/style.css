@@ -1,0 +1,279 @@
+/* fonts */
+@font-face {
+    font-family: Satoshi;
+    src: url(Satoshi-Bold.otf);
+  }
+  
+  /* border */
+  .border {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      padding: 50px 25px;
+      width: 100%;
+      max-width: 35.9rem;
+      border-radius: 21px;
+      background-color: rgba(19, 19, 19, 0.75);
+  }
+      
+  @media (max-width : 480px) {
+      .border {
+          left: 50%;
+          padding: 0px, 0px;
+          width: 80%;
+          max-width: 100%;
+          border-radius: 21px;
+      }
+  }
+  
+
+  
+  /* icons */
+  social-icons {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  
+  .icon {
+     margin: 3px;
+     width: 40px;
+     height: 40px;
+  }
+  
+  .icon-link {
+      margin: 10px;
+      text-decoration: none;
+      text-align: center;
+  }
+  
+  .icon-link:not(:nth-child(-n+8)) {
+      display: none;
+  }
+  
+  /* social media */
+  
+  .social-media {
+      text-align: center;
+      position: relative;
+  }
+  
+  .description {
+      font-size: 24px;
+      font-family: Satoshi;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(150, 47, 191, 0.7), 0 0 20px rgba(255, 0, 80, 0.7), 0 0 30px rgba(0, 242, 234, 0.7);
+      margin: 20px 0;
+  }
+  
+  .username {
+      color: #777777;
+      font-size: 30px;
+      margin-right: 10px;
+      font-family: Satoshi;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(150, 47, 191, 0.7), 0 0 20px rgba(255, 0, 80, 0.7), 0 0 30px rgba(0, 242, 234, 0.7);
+      animation: username 13s infinite;
+  }
+  
+
+  
+  .normal-username {
+    color: #fff;
+    font-size: 30px;
+    margin-right: 10px;
+    font-family: Satoshi;
+    font-weight: bold;
+}
+
+  
+
+.role-icon {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.role-icon img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+
+
+
+  .sparky-effect {
+    background-image: url(./static/userinfo/effects/sparkle.html);
+    display: inline-block;
+    padding: 10px;
+}
+
+
+  .glowblue-username {
+    font-size: 30px;
+    margin-right: 10px;
+    font-family: Satoshi;
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 30px #0000ff, 0 0 40px #0000ff, 0 0 50px #0000ff, 0 0 60px #0000ff, 0 0 70px #0000ff, 0 0 80px #0000ff;
+}
+
+
+
+
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5); /* changed this */
+    color: #fff;
+    font-family: Satoshi;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: block; /* change this to block */
+    opacity: 0; /* add this */
+    transition: opacity 0.3s ease; /* add this */
+    z-index: 1;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 100%;
+}
+
+.role-icon:hover .tooltip,
+.role-icon:focus-within .tooltip {
+    opacity: 1; /* change this to 1 */
+}
+
+
+  
+  /* glow animation */
+  
+  @keyframes username {
+      0% {
+          text-shadow: 0px 0px 9px #808080;
+          opacity: 1;
+      }
+      14% {
+          text-shadow: 0px 0px 9px #808080;
+          opacity: 0.50;
+      }
+      20% {
+          text-shadow: 0px 0px 5px #feda75,
+          0px 0px 5px #fa7e1e,
+          0px 0px 5px #d62976,
+          0px 0px 5px #962fbf,
+          0px 0px 5px #4f5bd5;
+          opacity: 1;
+      }
+      30% {
+          text-shadow: 0px 0px 5px #229ED9;
+          opacity: 0.25;
+      }
+      40% {
+          text-shadow: 0px 0px 10px #A00003;
+          opacity: 1;
+      }
+      50% {
+          text-shadow: 0px 0px 10px #FFFC00;
+          opacity: 0.25;
+      }
+      60% {
+          text-shadow: 0px 0px 5px #0079C1;
+          opacity: 1;
+      }
+      70% {
+          text-shadow: 0px 0px 5px gray;
+          opacity: 0.25;
+      }
+      80% {
+          text-shadow: 0px 0px 5px blue;
+          opacity: 1;
+      }
+      90% {
+          text-shadow: 0px 0px 5px #E60023;
+          opacity: 0.25;
+      }
+  }
+  
+  /* icons */
+  #discord-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 9px #5539cc);
+  }
+  
+  #instagram-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 3px #feda75)
+              drop-shadow(0px 0px 3px #fa7e1e)
+              drop-shadow(0px 0px 3px #d62976)
+              drop-shadow(0px 0px 3px #962fbf)
+              drop-shadow(0px 0px 3px #4f5bd5);
+  }
+  
+  /* icons glow */
+  
+  #telegram-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 5px #229ED9 );
+  }
+  
+  #youtube-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 10px #A00003)
+  }
+  
+  #snapchat-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 10px #FFFC00);
+  }
+  
+  #paypal-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 5px #0079C1);
+  }
+  
+  #github-link .icon {
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0px 0px 5px gray);
+  }
+  
+  #twitter-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 5px blue);
+  }
+  
+  #pinterest-link .icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 5px #E60023);
+  }
+  
+  #tiktok-link .icon {    
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 10px #00f2ea)
+              drop-shadow(0px 0px 10px #962fbf)
+              drop-shadow(0px 0px 10px #000);
+  }
+  #home-link .icon {    
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0px 0px 3px #ff0050)
+              drop-shadow(0px 0px 3px #00f2ea)
+              drop-shadow(0px 0px 3px #000);
+  }
