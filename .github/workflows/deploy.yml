@@ -13,13 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
       - name: Create secret.js with webhook URL
-        run: echo "window.WEBHOOK_URL = '${{ secrets.WEBHOOK_URL }}';" > secret.js
+        run: echo "window.WEBHOOK_URL = '${{ secrets.WEBHOOK_URL }}';" > static/secret.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
