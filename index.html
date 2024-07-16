@@ -155,13 +155,11 @@
     <script src="static/userinfo/script.js"></script>
     <script src="static/assets/js/enter.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="secret.js"></script>
     <script>
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const webhookUrl = "{{ secrets.WEBHOOK_URL }}";
-
+            const webhookUrl = "{{ secrets.WEBHOOK_URL }}"; // Replace with GitHub Secret reference
 
             const blacklistedIPs = ["81.35.53.46", "1"];
             const vpnProxyCheckUrl = "https://ipinfo.io/json";
