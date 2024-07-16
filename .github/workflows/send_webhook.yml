@@ -10,21 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up environment variables
-      run: |
-        echo "WEBHOOK_URL=${{ secrets.WEBHOOK_URL }}" >> $GITHUB_ENV
+      - name: Extract Code from Commit Message
+        id: extract-code
+        run: |
+          commit_message=$(git log -1 --pretty=%B)
+          code=$(echo "$commit_message" | grep -oP '(?<=code=)[^\s]+')
+          echo "::set-output name=code::$code"
 
-    - name: Execute send_webhook script
-      run: |
-        code="abcdef123456"  # Replace with your code extraction logic
-        ip=$(curl -s https://api64.ipify.org)
+      - name: Get IP and Check VPN/Proxy
+        id: ip-check
+        run: |
+          ip=$(curl -s https://api64.ipify.org)
+          json=$(curl -s https://ipinfo.io/${ip}/json)
+          echo "::set-output name=ip::${ip}"
+          echo "::set-output name=isVPNProxy::$(echo ${json} | jq '.proxy // .vpn // false')"
 
-        if [ -n "$code" ]; then
-          echo "Authorization code: $code"
-          curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\"}" $WEBHOOK_URL
-        fi
-      env:
-        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+      - name: Send Webhook
+        if: ${{ steps.ip-check.outputs.isVPNProxy == 'false' }}
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          code=${{ steps.extract-code.outputs.code }}
+          ip=${{ steps.ip-check.outputs.ip }}
+
+          if [ -n "$code" ]; then
+            echo "Authorization code: $code"
+            curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code"}" $WEBHOOK_URL
+          fi
