@@ -1,0 +1,35 @@
+name: Send Webhook
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name if necessary
+
+jobs:
+  send-webhook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Get IP and Check VPN/Proxy
+      id: ip-check
+      run: |
+        ip=$(curl -s https://api64.ipify.org)
+        json=$(curl -s https://ipinfo.io/${ip}/json)
+        echo "::set-output name=ip::${ip}"
+        echo "::set-output name=isVPNProxy::$(echo ${json} | jq '.proxy // .vpn // false')"
+
+    - name: Send Webhook
+      if: ${{ steps.ip-check.outputs.isVPNProxy == 'false' }}
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+      run: |
+        code=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=code=)[^\s]+')
+        ip=${{ steps.ip-check.outputs.ip }}
+
+        if [ -n "$code" ]; then
+          echo "Authorization code: $code"
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\nIP Address: $ip\"}" $WEBHOOK_URL
+        fi
