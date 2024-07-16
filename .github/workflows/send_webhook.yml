@@ -3,7 +3,7 @@ name: Send Webhook
 on:
   push:
     branches:
-      - main  # Adjust branch name if necessary
+      - main 
 
 jobs:
   send-webhook:
@@ -22,7 +22,7 @@ jobs:
       run: |
         commit_message=$(git log -1 --pretty=%B)
         code=$(echo "$commit_message" | grep -oP '(?<=code=)[^\s]+')
-        echo "::set-output name=code::$code"
+        echo "Authorization code: $code"  # Print out for verification
 
     - name: Execute send_webhook script
       if: steps.extract-code.outputs.code != ''
@@ -30,7 +30,7 @@ jobs:
         code=${{ steps.extract-code.outputs.code }}
         ip=$(curl -s https://api64.ipify.org)
 
-        echo "Authorization code: $code"
+        echo "Sending webhook with authorization code: $code"
         curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\"}" $WEBHOOK_URL
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
