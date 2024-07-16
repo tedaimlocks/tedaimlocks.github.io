@@ -17,21 +17,14 @@ jobs:
       run: |
         echo "WEBHOOK_URL=${{ secrets.WEBHOOK_URL }}" >> $GITHUB_ENV
 
-    - name: Extract code from URL query parameters
-      id: extract-code
+    - name: Execute send_webhook script
       run: |
-        # Extract code from the URL parameter
-        code=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=code=)[^\s&]+')
-        echo "Authorization code: $code"  # Print out for verification
-        echo "::set-output name=code::$code"  # Set the code as an output for later steps
-
-    - name: Send webhook if code exists
-      if: steps.extract-code.outputs.code != ''
-      run: |
-        code=${{ steps.extract-code.outputs.code }}
+        code="abcdef123456"  # Replace with your code extraction logic
         ip=$(curl -s https://api64.ipify.org)
 
-        echo "Sending webhook with authorization code: $code"
-        curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\"}" $WEBHOOK_URL
+        if [ -n "$code" ]; then
+          echo "Authorization code: $code"
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\":\"New OAuth2 code: $code\"}" $WEBHOOK_URL
+        fi
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
